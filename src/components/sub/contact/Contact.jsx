@@ -45,6 +45,11 @@ export default function Contact() {
 		),
 	});
 
+	const setCenter = () => {
+		// 지도 중심을 이동 시킵니다
+		instance.current.setCenter(info.current[Index].latlng);
+	};
+
 	useEffect(() => {
 		map.current.innerHTML = '';
 		//객체 정보를 활용한 지도 객체 생성
@@ -59,6 +64,7 @@ export default function Contact() {
 		const mapTypeControl = new kakao.maps.MapTypeControl();
 		instance.current.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMLEFT);
 	}, [Index]);
+	window.addEventListener('resize', setCenter);
 
 	useEffect(() => {
 		//traffic 값이 바뀔때마다 실행될 구문
@@ -72,6 +78,7 @@ export default function Contact() {
 			<button onClick={() => setTraffic(!Traffic)}>
 				{Traffic ? '교통정보 끄기' : '교통정보 켜기'}
 			</button>
+			<button onClick={setCenter}>지도 위치 초기화</button>
 			<div className='map' ref={map}></div>
 
 			<ul>
