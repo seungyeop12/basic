@@ -16,9 +16,9 @@ export default function Youtube() {
 	const [IsModal, setIsModal] = useState(false);
 	const [Index, setIndex] = useState(0);
 	const fetchYoutube = () => {
-		const api_key = 'AIzaSyDCGJcstcAwUWDoTcrQ4CZeSjdkDz8RSB4';
+		const api_key = 'AIzaSyA4iVjYFWaYcsCq0z7a2Ey2FO9MTtXA6QI';
 		const baseURL = 'https://www.googleapis.com/youtube/v3/playlistItems';
-		const pid = 'PLSflH3hv0IGX5YEKeboI4EFY3h5g6nFKU';
+		const pid = 'PLMMMmfSQpakSd6WsuPqYUflXHqd1YJliN';
 		const num = 10;
 		const resultURL = `${baseURL}?key=${api_key}&part=snippet&playlistId=${pid}&maxResults=${num}`;
 		fetch(resultURL)
