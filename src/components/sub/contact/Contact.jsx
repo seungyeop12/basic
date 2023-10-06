@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from 'react';
 
 export default function Contact() {
 	const map = useRef(null);
+	const view = useRef(null);
 	const instance = useRef(null);
 	const [Traffic, setTraffic] = useState(false);
 	const [Index, setIndex] = useState(2);
@@ -66,6 +67,16 @@ export default function Contact() {
 	}, [Index]);
 	window.addEventListener('resize', setCenter);
 
+	//로드뷰 관련 코드
+	const roadviewContainer = view.current;
+	const roadview = new kakao.maps.Roadview(roadviewContainer);
+	const roadviewClient = new kakao.maps.RoadviewClient();
+	const position = info.current[Index].latlng;
+
+	roadviewClient.getNearestPanoId(position, 50, (panoId) => {
+		roadview.setPanoId(panoId, position); //panoId와 중심좌표를 통해 로드뷰 실행
+	});
+
 	useEffect(() => {
 		//traffic 값이 바뀔때마다 실행될 구문
 		Traffic
@@ -80,6 +91,8 @@ export default function Contact() {
 			</button>
 			<button onClick={setCenter}>지도 위치 초기화</button>
 			<div className='map' ref={map}></div>
+
+			<div className='view' ref={view}></div>
 
 			<ul>
 				{info.current.map((el, idx) => (
