@@ -9,4 +9,17 @@
 		background: #111;
 		margin-bottom: 100px;
 	}
+
+	ul {
+		display: flex;
+		gap: 20px;
+
+		li {
+			cursor: pointer;
+		}
+
+		li.on {
+			color: hotpink;
+		}
+	}
 }

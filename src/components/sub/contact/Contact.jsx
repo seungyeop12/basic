@@ -46,6 +46,7 @@ export default function Contact() {
 	});
 
 	useEffect(() => {
+		map.current.innerHTML = '';
 		//객체 정보를 활용한 지도 객체 생성
 		instance.current = new kakao.maps.Map(map.current, {
 			center: info.current[Index].latlng,
@@ -75,7 +76,7 @@ export default function Contact() {
 
 			<ul>
 				{info.current.map((el, idx) => (
-					<li key={idx} onClick={() => setIndex(idx)}>
+					<li className={Index === idx ? 'on' : ''} key={idx} onClick={() => setIndex(idx)}>
 						{el.title}
 					</li>
 				))}
