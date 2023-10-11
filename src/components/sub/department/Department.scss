@@ -1,4 +1,4 @@
-.Department {
+.Staff {
 	figure {
 		background-color: lightblue;
 	}
@@ -37,11 +37,14 @@
 		width: 100%;
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
 
 		article {
 			width: 30%;
-			margin-bottom: 100px;
+			margin-bottom: 50px;
+
+			p {
+				color: gray;
+			}
 
 			.pic {
 				width: 100%;
@@ -54,7 +57,7 @@
 				}
 			}
 
-			h2 {
+			h3 {
 				margin-bottom: 10px;
 			}
 		}
