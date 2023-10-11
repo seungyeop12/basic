@@ -29,6 +29,16 @@
       "name": "Peter",
       "position": "Project Manager",
       "pic": "member6.jpg"
+    },
+    {
+      "name": "Celina",
+      "position": "UI Designer",
+      "pic": "member7.jpg"
+    },
+    {
+      "name": "Elsa",
+      "position": "Project Manager",
+      "pic": "member8.jpg"
     }
   ]
 }
