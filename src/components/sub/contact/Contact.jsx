@@ -149,6 +149,21 @@ export default function Contact() {
 	return (
 		<Layout title={'Contact'}>
 			<div className='upperbox'>
+				<div className='ha'>
+					<div className='cha'>
+						<h2>Email: art7449@gmail.com</h2>
+						<h2>Tel: 010-7449-8049</h2>
+						<h2>Name: Cha Seung Yeop</h2>
+					</div>
+					<div className='ck'>
+						<h3 className='ta'>Lorem, ipsum.</h3>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Doloribus nemo vel
+							necessitatibus!
+						</p>
+					</div>
+				</div>
+
 				<div id='mailBox'>
 					<form ref={form} onSubmit={sendEmail}>
 						<div className='upper'>
@@ -168,18 +183,6 @@ export default function Contact() {
 							<input type='submit' value='Send' />
 						</div>
 					</form>
-				</div>
-				<div className='ha'>
-					<h2>Email: art7449@gmail.com</h2>
-					<h2>Tel: 010-7449-8049</h2>
-					<h2>Name: Cha Seung Yeop</h2>
-				</div>
-				<div className='ck'>
-					<h2 className='ta'>Lorem, ipsum.</h2>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Doloribus nemo vel
-						necessitatibus!
-					</p>
 				</div>
 			</div>
 			<div id='mapBox'>
