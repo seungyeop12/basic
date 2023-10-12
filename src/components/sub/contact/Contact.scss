@@ -2,10 +2,29 @@
 	figure {
 		background: orange;
 	}
+	.ha {
+		text-align: left;
+		margin-bottom: 10px;
+		margin-top: 100px;
+		font: bold 1rem/1 'arial';
 
+		h2 {
+			padding-bottom: 20px;
+		}
+	}
+
+	.ck {
+		margin-top: 100px;
+
+		p {
+			color: gray;
+			padding-bottom: 10px;
+		}
+	}
 	#mailBox {
 		width: 50%;
 		margin-bottom: 100px;
+		margin-left: 600px;
 
 		.upper {
 			width: 100%;
