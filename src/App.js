@@ -7,6 +7,7 @@ import Youtube from './components/sub/youtube/Youtube';
 import Members from './components/sub/members/Members';
 import Gallery from './components/sub/gallery/Gallery';
 import Contact from './components/sub/contact/Contact';
+import Community from './components/sub/Community/Community';
 
 function App() {
 	return (
@@ -27,6 +28,7 @@ function App() {
 			<Route path='/youtube' component={Youtube} />
 			<Route path='/members' component={Members} />
 			<Route path='/contact' component={Contact} />
+			<Route path='/Community' component={Community} />
 		</>
 	);
 }
