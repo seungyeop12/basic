@@ -8,6 +8,7 @@ import Members from './components/sub/members/Members';
 import Gallery from './components/sub/gallery/Gallery';
 import Contact from './components/sub/contact/Contact';
 import Community from './components/sub/Community/Community';
+import Main from './components/main/mainWrap/Main';
 
 function App() {
 	return (
@@ -17,6 +18,7 @@ function App() {
 				<Route exact path='/'>
 					{/* 메인페이지 전용 헤더 */}
 					<Header isMain={true} />
+					<Main />
 				</Route>
 				<Route path='/'>
 					{/* 서브페이지 전용 헤더 */}
