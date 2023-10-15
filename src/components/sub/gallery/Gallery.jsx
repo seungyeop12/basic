@@ -20,7 +20,7 @@ export default function Gallery() {
 		const method_interest = 'flickr.interestingness.getList';
 		const method_user = 'flickr.people.getPhotos';
 		const method_search = 'flickr.photos.search';
-		const num = 30;
+		const num = 10;
 
 		if (opt.type === 'interest') {
 			url = `https://www.flickr.com/services/rest/?method=${method_interest}&api_key=${api_key}&per_page=${num}&nojsoncallback=1&format=json`;
@@ -121,17 +121,18 @@ export default function Gallery() {
 							return (
 								<article key={idx}>
 									<div className='inner'>
-										<img
-											className='pic'
-											src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
-											alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
-											onClick={(e) => {
-												setActiveURL(e.target.getAttribute('alt'));
-												setIsModal(true);
-											}}
-										/>
-										<h2>{data.title}</h2>
-
+										<div className='wrap'>
+											<img
+												className='pic'
+												src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
+												alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
+												onClick={(e) => {
+													setActiveURL(e.target.getAttribute('alt'));
+													setIsModal(true);
+												}}
+											/>
+										</div>
+										;<h2>{data.title}</h2>
 										<div className='profile'>
 											<img
 												src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}

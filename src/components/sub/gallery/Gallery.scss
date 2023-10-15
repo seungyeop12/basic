@@ -21,6 +21,15 @@
 					padding: 10px;
 					background: #fff;
 					box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+					.wrap {
+						background: #333;
+						border: 1px solid aqua;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						color: #fff;
+						font-size: 100px;
+					}
 
 					.pic {
 						width: 100%;
