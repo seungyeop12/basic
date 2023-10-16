@@ -6,7 +6,7 @@ export default function Members() {
 		<Layout title={'Members'}>
 			<form>
 				<fieldset>
-					<legend>회원가입 폼 양식</legend>
+					<legend className='h'>회원가입 폼 양식</legend>
 					<table border='1'>
 						<tbody>
 							{/* userid */}
