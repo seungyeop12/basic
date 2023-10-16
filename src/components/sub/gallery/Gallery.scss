@@ -1,5 +1,3 @@
-@import '../../../styles/Variable.scss';
-
 .Gallery {
 	.content {
 		.picFrame {
@@ -51,34 +49,6 @@
 						}
 					}
 				}
-			}
-		}
-	}
-}
-@media screen and (max-width: $labtop) {
-	.Gallery {
-		.picFrame {
-			article {
-				width: 33.333%;
-			}
-		}
-	}
-}
-
-@media screen and (max-width: $tablet) {
-	.Gallery {
-		.picFrame {
-			article {
-				width: 50%;
-			}
-		}
-	}
-}
-@media screen and (max-width: $mobile) {
-	.Gallery {
-		.picFrame {
-			article {
-				width: 100%;
 			}
 		}
 	}
