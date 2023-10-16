@@ -11,11 +11,15 @@ export default function Members() {
 		gender: false,
 		interests: false,
 		edu: '',
+		comments: '',
 	};
 	const [Val, setVal] = useState(initVal);
 	const [Errs, setErrs] = useState({});
 
-	console.log(Errs);
+	const resetForm = (e) => {
+		e.preventDefault();
+		setVal(initVal);
+	};
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -89,11 +93,16 @@ export default function Members() {
 		if (!value.edu) {
 			errs.edu = '학력을 선택하세요.';
 		}
+		//남기는말 인증
+		if (value.comments.length < 10) {
+			errs.comments = '남기는말은 10글자 이상 입력하세요.';
+		}
 		return errs;
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
 		if (Object.keys(check(Val)).length === 0) {
 			alert('인증통과');
 		} else {
@@ -222,10 +231,28 @@ export default function Members() {
 								</td>
 							</tr>
 
+							{/* comments */}
+							<tr>
+								<th>
+									<label htmlFor='comments'>comments</label>
+								</th>
+								<td>
+									<textarea
+										name='comments'
+										id=''
+										cols='30'
+										rows='3'
+										value={Val.comments}
+										onChange={handleChange}
+									></textarea>
+									{Errs.comments && <p>{Errs.comments}</p>}
+								</td>
+							</tr>
+
 							{/* btnSet */}
 							<tr>
 								<th colSpan='2'>
-									<input type='reset' value='cancel' />
+									<input type='reset' value='cancel' onClick={resetForm} />
 									<input type='submit' value='send' />
 								</th>
 							</tr>
