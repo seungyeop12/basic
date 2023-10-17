@@ -40,3 +40,18 @@
 		}
 	}
 }
+
+.tablet,
+.mobile {
+	.Staff {
+		.content {
+			.memberBox {
+				width: 100%;
+
+				article {
+					width: 48%;
+				}
+			}
+		}
+	}
+}

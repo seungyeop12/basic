@@ -2,7 +2,6 @@ import Layout from '../../common/layout/Layout';
 import Modal from '../../common/modal/Modal';
 import './Gallery.scss';
 import { useState, useEffect, useRef } from 'react';
-import Masonry from 'react-masonry-component';
 
 export default function Gallery() {
 	const refInput = useRef(null);
@@ -13,14 +12,13 @@ export default function Gallery() {
 	const [IsModal, setIsModal] = useState(false);
 	const my_id = '164021883@N04';
 
-	//처음 마운트 데이터 호출 함수
 	const fetchData = async (opt) => {
 		let url = '';
 		const api_key = '9283e96df728a0ba4e1f9b9bdc9ae785';
 		const method_interest = 'flickr.interestingness.getList';
 		const method_user = 'flickr.people.getPhotos';
 		const method_search = 'flickr.photos.search';
-		const num = 10;
+		const num = 6;
 
 		if (opt.type === 'interest') {
 			url = `https://www.flickr.com/services/rest/?method=${method_interest}&api_key=${api_key}&per_page=${num}&nojsoncallback=1&format=json`;
@@ -41,7 +39,6 @@ export default function Gallery() {
 		setPics(json.photos.photo);
 	};
 
-	//submit이벤트 발생시 실행할 함수
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsUser(false);
@@ -57,7 +54,6 @@ export default function Gallery() {
 		refInput.current.value = '';
 	};
 
-	//myGallery 클릭 이벤트 발생시 실행할 함수
 	const handleClickMy = (e) => {
 		setIsUser(true);
 		if (e.target.classList.contains('on')) return;
@@ -69,7 +65,6 @@ export default function Gallery() {
 		fetchData({ type: 'user', id: my_id });
 	};
 
-	//Interest Gallery 클릭 이벤트 발생시 실행할 함수
 	const handleClickInterest = (e) => {
 		setIsUser(false);
 		if (e.target.classList.contains('on')) return;
@@ -81,7 +76,6 @@ export default function Gallery() {
 		fetchData({ type: 'interest' });
 	};
 
-	//profile 아이디 클릭시 실행할 함수
 	const handleClickProfile = (e) => {
 		if (IsUser) return;
 		fetchData({ type: 'user', id: e.target.innerText });
@@ -90,6 +84,7 @@ export default function Gallery() {
 
 	useEffect(() => {
 		fetchData({ type: 'user', id: my_id });
+		//fetchData({ type: 'interest' });
 	}, []);
 
 	return (
@@ -111,46 +106,39 @@ export default function Gallery() {
 				</div>
 
 				<div className='picFrame'>
-					<Masonry
-						elementType={'div'}
-						options={{ transitionDuration: '0.5s' }}
-						disableImagesLoaded={false}
-						updateOnEachImageLoad={false}
-					>
-						{Pics.map((data, idx) => {
-							return (
-								<article key={idx}>
-									<div className='inner'>
-										<div className='wrap'>
-											<img
-												className='pic'
-												src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
-												alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
-												onClick={(e) => {
-													setActiveURL(e.target.getAttribute('alt'));
-													setIsModal(true);
-												}}
-											/>
-										</div>
-										<h2>{data.title}</h2>
-										<div className='profile'>
-											<img
-												src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
-												alt={data.owner}
-												onError={(e) => {
-													e.target.setAttribute(
-														'src',
-														'https://www.flickr.com/images/buddyicon.gif'
-													);
-												}}
-											/>
-											<span onClick={handleClickProfile}>{data.owner}</span>
-										</div>
-									</div>
-								</article>
-							);
-						})}
-					</Masonry>
+					{Pics.map((data, idx) => {
+						return (
+							<article key={idx}>
+								<div className='picWrap'>
+									<img
+										className='pic'
+										src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
+										alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
+										onClick={(e) => {
+											setActiveURL(e.target.getAttribute('alt'));
+											setIsModal(true);
+										}}
+									/>
+								</div>
+
+								{/* <h2>{data.title}</h2>
+
+									<div className='profile'>
+										<img
+											src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
+											alt={data.owner}
+											onError={(e) => {
+												e.target.setAttribute(
+													'src',
+													'https://www.flickr.com/images/buddyicon.gif'
+												);
+											}}
+										/>
+										<span onClick={handleClickProfile}>{data.owner}</span>
+									</div> */}
+							</article>
+						);
+					})}
 				</div>
 			</Layout>
 
@@ -166,8 +154,9 @@ export default function Gallery() {
 /*
 	클릭한 버튼을 또 클릭했을때 같은 데이터를 불필요하게 또다시 fetching요청하지 않도록
 	클릭한 버튼에 on이 붙어있을때 함수 호출을 강제 중지
+
 	현재 출력되는 갤러리 방식이 User type 갤러리일때 같은 사용자의 갤러리가 보이는 형태이므로
 	사용자 아이디를 클릭하게되면 같은 데이터 요청을 보내게됨
 	--- 사용자 타입의 갤러리를 호출할때마다 IsUser state값을 true로 변경해서 
-	----이벤트가 발생할때마다 IsUser값이 true 사용자 아이디 클릭 이벤트 핸들러 제거
+	--- 이벤트가 발생할때마다 IsUser값이 true 사용자 아이디 클릭 이벤트 핸들러 제거
 */
