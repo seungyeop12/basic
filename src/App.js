@@ -9,10 +9,17 @@ import Gallery from './components/sub/gallery/Gallery';
 import Contact from './components/sub/contact/Contact';
 import Community from './components/sub/Community/Community';
 import Main from './components/main/mainWrap/Main';
-
 import { useMedia } from './hooks/useMedia';
+import { useEffect } from 'react';
+import { fetchYoutube } from './redux/youtubeSlice';
+import { useDispatch } from 'react-redux';
 
 function App() {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchYoutube());
+	}, []);
 	console.log(useMedia());
 
 	return (

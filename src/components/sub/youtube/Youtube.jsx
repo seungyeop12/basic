@@ -1,27 +1,11 @@
 import Layout from '../../common/layout/Layout';
 import Modal from '../../common/modal/Modal';
 import './Youtube.scss';
-import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 export default function Youtube() {
-	const [Youtube, setYoutube] = useState([]);
-	const [IsModal, setIsModal] = useState(false);
-	const [Index, setIndex] = useState(0);
+	const Youtube = useSelector((store) => store.youtube.data);
 
-	const fetchYoutube = async () => {
-		const api_key = 'AIzaSyA4iVjYFWaYcsCq0z7a2Ey2FO9MTtXA6QI';
-		const baseURL = 'https://www.googleapis.com/youtube/v3/playlistItems';
-		const pid = 'PLMMMmfSQpakSd6WsuPqYUflXHqd1YJliN';
-		const num = 5;
-		const resultURL = `${baseURL}?key=${api_key}&part=snippet&playlistId=${pid}&maxResults=${num}`;
-
-		const data = await fetch(resultURL);
-		const json = await data.json();
-		setYoutube(json.items);
-	};
-	useEffect(() => {
-		fetchYoutube();
-	}, []);
 	return (
 		<>
 			<Layout title={'Youtube'}>
@@ -39,8 +23,8 @@ export default function Youtube() {
 							<div
 								className='pic'
 								onClick={() => {
-									setIndex(idx);
-									setIsModal(true);
+									// setIndex(idx);
+									// setIsModal(true);
 								}}
 							>
 								<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
@@ -49,14 +33,14 @@ export default function Youtube() {
 					);
 				})}
 			</Layout>
-			{IsModal && (
+			{/* {IsModal && (
 				<Modal setIsModal={setIsModal}>
 					<iframe
 						src={`https://www.youtube.com/embed/${Youtube[Index].snippet.resourceId.videoId}`}
 						title='youtube'
 					></iframe>
 				</Modal>
-			)}
+			)} */}
 		</>
 	);
 }
