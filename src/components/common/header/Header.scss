@@ -6,7 +6,8 @@
 
 	h1 {
 		font-size: 1.5rem;
-		color: #333;
+		//color: #333;
+		color: var(--color1);
 	}
 
 	ul {
@@ -33,5 +34,13 @@
 .header.sub {
 	h1 {
 		color: hotpink;
+	}
+}
+
+.mobile {
+	.header {
+		ul {
+			display: none;
+		}
 	}
 }

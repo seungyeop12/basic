@@ -9,15 +9,14 @@ import Gallery from './components/sub/gallery/Gallery';
 import Contact from './components/sub/contact/Contact';
 import Community from './components/sub/Community/Community';
 import Main from './components/main/mainWrap/Main';
-import { useRef } from 'react';
+
 import { useMedia } from './hooks/useMedia';
 
 function App() {
-	useMedia();
-	const refMain = useRef(null);
+	console.log(useMedia());
 
 	return (
-		<main ref={refMain}>
+		<main className={useMedia()}>
 			{/* Switch안쪽에서 중첩되는 조건 라우트의 컴포넌트가 있을때 위쪽의 조건의 컴포넌트만 호출하고 나머지 무시 */}
 			<Switch>
 				<Route exact path='/'>
