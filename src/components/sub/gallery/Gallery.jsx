@@ -132,7 +132,7 @@ export default function Gallery() {
 												}}
 											/>
 										</div>
-										;<h2>{data.title}</h2>
+										<h2>{data.title}</h2>
 										<div className='profile'>
 											<img
 												src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}

@@ -21,7 +21,6 @@
 					box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
 					.wrap {
 						background: #333;
-						border: 1px solid aqua;
 						display: flex;
 						justify-content: center;
 						align-items: center;
@@ -49,6 +48,34 @@
 						}
 					}
 				}
+			}
+		}
+	}
+}
+
+.laptop {
+	.Gallery {
+		.picFrame {
+			article {
+				width: 32%;
+			}
+		}
+	}
+}
+.tablet {
+	.Gallery {
+		.picFrame {
+			article {
+				width: 48%;
+			}
+		}
+	}
+}
+.mobile {
+	.Gallery {
+		.picFrame {
+			article {
+				width: 100%;
 			}
 		}
 	}
