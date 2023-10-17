@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import { FaBars } from 'react-icons/fa';
+import { BiSearch } from 'react-icons/bi';
 
 export default function Header({ isMain }) {
 	return (
@@ -42,7 +43,8 @@ export default function Header({ isMain }) {
 				</li>
 			</ul>
 
-			<FaBars className='bars' fontSize={22} color={'#333'} />
+			<BiSearch className='BiSearch' fontSize={22} color={'#fff'} margin-right={'100px'} />
+			<FaBars className='bars' fontSize={22} color={'#fff'} />
 		</header>
 	);
 }
