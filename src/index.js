@@ -6,11 +6,13 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import youtubrReducer from './redux/youtubeSlice';
 import flickrReducer from './redux/flickrSlice';
+import modalReducer from './redux/modalSlice';
 
 const store = configureStore({
 	reducer: {
 		youtube: youtubrReducer,
 		flickr: flickrReducer,
+		modal: modalReducer,
 	},
 });
 
