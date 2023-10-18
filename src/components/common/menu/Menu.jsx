@@ -1,14 +1,9 @@
+import './Menu.scss';
 import { Link, NavLink } from 'react-router-dom';
-import './Header.scss';
-import { FaBars } from 'react-icons/fa';
-import { BiSearch } from 'react-icons/bi';
-import { toggle } from '../../../redux/menuSlice';
-import { useDispatch } from 'react-redux';
 
-export default function Header({ isMain }) {
-	const dispatch = useDispatch();
+function Menu() {
 	return (
-		<header className='header'>
+		<aside className='menu'>
 			<h1>
 				<Link to='/'>LOGO</Link>
 			</h1>
@@ -20,7 +15,7 @@ export default function Header({ isMain }) {
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to='/Community' activeClassName='active'>
+					<NavLink to='/community' activeClassName='active'>
 						Community
 					</NavLink>
 				</li>
@@ -45,9 +40,8 @@ export default function Header({ isMain }) {
 					</NavLink>
 				</li>
 			</ul>
-
-			<BiSearch className='BiSearch' fontSize={22} color={'#fff'} margin-right={'100px'} />
-			<FaBars className='bars' fontSize={22} color={'#333'} onClick={() => dispatch(toggle())} />
-		</header>
+		</aside>
 	);
 }
+
+export default Menu;

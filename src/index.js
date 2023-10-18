@@ -7,12 +7,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import youtubrReducer from './redux/youtubeSlice';
 import flickrReducer from './redux/flickrSlice';
 import modalReducer from './redux/modalSlice';
+import menuReducer from './redux/menuSlice';
 
 const store = configureStore({
 	reducer: {
 		youtube: youtubrReducer,
 		flickr: flickrReducer,
 		modal: modalReducer,
+		menu: menuReducer,
 	},
 });
 
