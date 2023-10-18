@@ -24,6 +24,11 @@
 		li {
 			a.active {
 				color: white;
+
+				&:hover {
+					color: white;
+					transition: 0.5s;
+				}
 			}
 		}
 	}
