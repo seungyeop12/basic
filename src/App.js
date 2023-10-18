@@ -13,12 +13,14 @@ import { useMedia } from './hooks/useMedia';
 import { useEffect } from 'react';
 import { fetchYoutube } from './redux/youtubeSlice';
 import { useDispatch } from 'react-redux';
+import { fetchFlickr } from './redux/flickrSlice';
 
 function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(fetchYoutube());
+		dispatch(fetchFlickr({ type: 'user', id: '164021883@N04' }));
 	}, []);
 	console.log(useMedia());
 
