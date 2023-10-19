@@ -14,22 +14,24 @@ export default function Youtube() {
 					let desc = data.snippet.description;
 					let date = data.snippet.publishedAt;
 					return (
-						<article key={idx}>
-							<div className='text'>
-								<h2>{tit.length > 60 ? tit.substr(0, 60) + '...' : tit}</h2>
-								<p>{desc.length > 120 ? desc.substr(0, 120) + '...' : desc}</p>
-								<span>{date.split('T')[0].split('-').join('.')}</span>
-							</div>
-							<div
-								className='pic'
-								onClick={() => {
-									// setIndex(idx);
-									// setIsModal(true);
-								}}
-							>
-								<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
-							</div>
-						</article>
+						<div className='wrap'>
+							<article key={idx}>
+								<div className='text'>
+									<h2>{tit.length > 60 ? tit.substr(0, 60) + '...' : tit}</h2>
+									<p>{desc.length > 120 ? desc.substr(0, 120) + '...' : desc}</p>
+									<span>{date.split('T')[0].split('-').join('.')}</span>
+								</div>
+								<div
+									className='pic'
+									onClick={() => {
+										// setIndex(idx);
+										// setIsModal(true);
+									}}
+								>
+									<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+								</div>
+							</article>
+						</div>
 					);
 				})}
 			</Layout>

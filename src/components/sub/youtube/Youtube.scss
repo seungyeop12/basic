@@ -2,10 +2,9 @@
 	figure {
 		background-color: gray;
 	}
-	.content {
+	.wrap {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
 		align-items: center;
 		height: 100vh;
 
@@ -50,7 +49,7 @@
 		figure {
 			background-color: gray;
 		}
-		.content {
+		.wrap {
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
