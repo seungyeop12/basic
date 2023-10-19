@@ -3,7 +3,7 @@ import './Info.scss';
 function Info() {
 	const { data } = useSelector((store) => store.flickr);
 	return (
-		<section className='info'>
+		<section className='myScroll'>
 			<div className='wrap'>
 				{data.map((pic, idx) => {
 					if (idx >= 6) return null;
