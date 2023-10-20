@@ -10,6 +10,8 @@ function Pics() {
 		let scroll = window.scrollY;
 		let scroll2 = scroll - pos;
 
+		//frame.current.style.height = window.innerWidth * 4 + 'px';
+
 		//가로 스크롤 wrapping 섹션 안에 들어왔을때
 		if (scroll >= pos && scroll < pos + frame.current.clientHeight - window.innerWidth) {
 			console.log('활성화영역 안쪽으로 들어옴');
