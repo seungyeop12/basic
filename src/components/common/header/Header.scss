@@ -1,12 +1,9 @@
-header {
-	width: 70vw;
-	padding: 0px 2px;
-	height: 100px;
-	border-bottom: 1px solid #aaa;
+.header {
+	width: 100%;
+	padding: 3vh 10vw;
+	background-color: black;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
-	margin: 0 auto;
 
 	h1 {
 		font-size: 1.5rem;
@@ -21,7 +18,7 @@ header {
 		gap: 4vw;
 		align-items: center;
 		font-size: 1rem;
-		color: #888;
+		color: gray;
 		margin-right: 200px;
 		li {
 			a.active {
@@ -51,7 +48,6 @@ header {
 .tablet,
 .mobile {
 	.header {
-		width: 80vw;
 		ul {
 			display: none;
 		}

@@ -1,21 +1,18 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
+//비동기 서버통신으로 데이터를 전달받아서 내부적으로 action타입을 자동 생성해서 액션객체 생성까지 완료하는 함수
 export const fetchYoutube = createAsyncThunk('youtube/request', async () => {
 	const api_key = 'AIzaSyA4iVjYFWaYcsCq0z7a2Ey2FO9MTtXA6QI';
 	const baseURL = 'https://www.googleapis.com/youtube/v3/playlistItems';
 	const pid = 'PLMMMmfSQpakSd6WsuPqYUflXHqd1YJliN';
-	const num = 5;
+	const num = 6;
 	const resultURL = `${baseURL}?key=${api_key}&part=snippet&playlistId=${pid}&maxResults=${num}`;
-
 	const result = await axios.get(resultURL);
 	return result.data.items;
 });
-
 //{type:'대기'}
 //{type:'성공': payload:[데이터]}
 //{type:'실패': payload:에러객체}
-
 //createAsyncThunk가 반환하는 action객체를 받아서 전역스토어 데이터를 변형하는 reducer함수등록
 const youtubeSlice = createSlice({
 	name: 'youtube',
@@ -37,7 +34,6 @@ const youtubeSlice = createSlice({
 		},
 	},
 });
-
 export default youtubeSlice.reducer;
 //리덕스에서 전역상태 관리에 쓰이는 용어정리
 /*

@@ -127,7 +127,7 @@ export default function Members() {
 				<fieldset>
 					<legend className='h'>회원가입 폼 양식</legend>
 					<table border='1'>
-						<tbody>
+						<tbody className='aaa'>
 							{/* userid */}
 							<tr>
 								<th scope='row'>
