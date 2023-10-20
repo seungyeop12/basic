@@ -126,6 +126,7 @@ export default function Members() {
 	};
 
 	useEffect(() => {
+		console.log('Val state값 변경에 의해서 showCheck함수 호출');
 		showCheck();
 	}, [Val]);
 
