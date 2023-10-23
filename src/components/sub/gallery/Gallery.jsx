@@ -2,18 +2,20 @@ import Layout from '../../common/layout/Layout';
 import Modal from '../../common/modal/Modal';
 import './Gallery.scss';
 import { useState, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchFlickr } from '../../../redux/flickrSlice';
+import { useDispatch } from 'react-redux';
 import { open } from '../../../redux/modalSlice';
+import { useFlickrQuery } from '../../../hooks/useFlickr';
 
 export default function Gallery() {
 	const dispatch = useDispatch();
-	const Pics = useSelector((store) => store.flickr.data);
 	const refInput = useRef(null);
 	const refBtnSet = useRef(null);
 	const [ActiveURL, setActiveURL] = useState('');
 	const [IsUser, setIsUser] = useState(true);
-	const my_id = '164021883@N04';
+	const my_id = '199347314@N08';
+	const [Opt, setOpt] = useState({ type: 'user', id: my_id });
+	const { data: Pics, isSuccess } = useFlickrQuery(Opt);
+	console.log('isSuccess', isSuccess);
 
 	//submit이벤트 발생시 실행할 함수
 	const handleSubmit = (e) => {
@@ -27,7 +29,7 @@ export default function Gallery() {
 			return alert('검색어를 입력하세요.');
 		}
 
-		dispatch(fetchFlickr({ type: 'search', tags: refInput.current.value }));
+		setOpt({ type: 'search', tags: refInput.current.value });
 		refInput.current.value = '';
 	};
 
@@ -40,7 +42,7 @@ export default function Gallery() {
 		btns.forEach((btn) => btn.classList.remove('on'));
 		e.target.classList.add('on');
 
-		dispatch(fetchFlickr({ type: 'user', id: my_id }));
+		setOpt({ type: 'user', id: my_id });
 	};
 
 	//Interest Gallery 클릭 이벤트 발생시 실행할 함수
@@ -52,13 +54,13 @@ export default function Gallery() {
 		btns.forEach((btn) => btn.classList.remove('on'));
 		e.target.classList.add('on');
 
-		dispatch(fetchFlickr({ type: 'interest' }));
+		setOpt({ type: 'interest' });
 	};
 
 	//profile 아이디 클릭시 실행할 함수
 	const handleClickProfile = (e) => {
 		if (IsUser) return;
-		dispatch(fetchFlickr({ type: 'user', id: e.target.innerText }));
+		setOpt({ type: 'user', id: e.target.innerText });
 		setIsUser(true);
 	};
 
@@ -81,20 +83,21 @@ export default function Gallery() {
 				</div>
 
 				<div className='picFrame'>
-					{Pics.map((data, idx) => {
-						return (
-							<article key={idx}>
-								<div className='inner'>
-									<img
-										className='pic'
-										src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
-										alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
-										onClick={(e) => {
-											setActiveURL(e.target.getAttribute('alt'));
-											dispatch(open());
-										}}
-									/>
-									{/* <h2>{data.title}</h2>
+					{isSuccess &&
+						Pics.map((data, idx) => {
+							return (
+								<article key={idx}>
+									<div className='inner'>
+										<img
+											className='pic'
+											src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
+											alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
+											onClick={(e) => {
+												setActiveURL(e.target.getAttribute('alt'));
+												dispatch(open());
+											}}
+										/>
+										{/* <h2>{data.title}</h2>
 
 										<div className='profile'>
 											<img
@@ -109,10 +112,10 @@ export default function Gallery() {
 											/>
 											<span onClick={handleClickProfile}>{data.owner}</span>
 										</div> */}
-								</div>
-							</article>
-						);
-					})}
+									</div>
+								</article>
+							);
+						})}
 				</div>
 			</Layout>
 

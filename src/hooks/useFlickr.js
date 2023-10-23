@@ -22,7 +22,7 @@ const fetchFlickr = async ({ queryKey }) => {
 		url = `https://www.flickr.com/services/rest/?method=${method_search}&api_key=${api_key}&per_page=${num}&nojsoncallback=1&format=json&tags=${opt.tags}`;
 	}
 	const { data } = await axios.get(url);
-	return data.data.photos.photo;
+	return data.photos.photo;
 };
 
 export const useFlickrQuery = (opt) => {
